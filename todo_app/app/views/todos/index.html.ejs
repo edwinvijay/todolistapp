@@ -7,12 +7,14 @@
 <% if (todos) { %>
 <% for (var i = 0, ii = todos.length; i < ii; i++) { %>
   <div class="row list-item" id="todo-<%= todos[i].id; %>">
-    <div class="span8">
-      <h3><%- linkTo(todos[i].title, todoPath(todos[i].id)); %></h3>
+    <div class="span8" style="background-color:<% if (todos[i].due < Date.now() ) {%> #FA8258 <% } %> <% if (todos[i].due > Date.now() ) { %> white <%}%> ;">
+      &nbsp;&nbsp;&nbsp;&nbsp; <b> <% if (todos[i].due < Date.now() ) {%> Overdue by: <%- Math.round((Date.now() - todos[i].due) / (1000 * 60 * 60)) %> hours <% } %> </b>
+      <h3><%- linkTo(todos[i].task, todoPath(todos[i].id)); %></h3>      
+      &nbsp;&nbsp;&nbsp;&nbsp;Status: <%- linkTo(todos[i].status, todoPath(todos[i].id)); %> &nbsp;&nbsp;&nbsp;&nbsp; Due: <%- linkTo(todos[i].due, todoPath(todos[i].id)); %>	
+    <form>  
+      <%- contentTag('button', 'Mark as Done', {type: 'submit', formaction: '/todos/' + todos[i].id + '?_method=DELETE', formmethod: 'POST', class: 'btn btn-success',style: 'height:30px !important;padding:5px 5px 5px 5px;text-align:center;'}) %>
+    </form>  
     </div>
-    <!-- <div class="span4">
-      <h3><i class="icon-list-alt"></i><%= todos[i].id; %></h3>
-    </div>-->
   </div>
 <% } %>
 <% } %>

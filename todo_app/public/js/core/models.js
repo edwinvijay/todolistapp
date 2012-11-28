@@ -2,8 +2,9 @@
 var Todo = function () {
 
   this.defineProperties({
-    title: {type: 'string', required: true},
+    task: {type: 'string', required: true},
     status: {type: 'string'},
+    due: {type: 'datetime'},
   });
 
   /*

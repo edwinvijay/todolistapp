@@ -1,12 +1,18 @@
 <div class="control-group">
-  <label for="title" class="control-label">title</label>
+  <label for="task" class="control-label">task</label>
   <div class="controls">
-    <%- contentTag('input', todo.title, {type:'text', class:'span6', name:'title'}) %>
+    <%- contentTag('input', todo.task, {type:'text', class:'span6', name:'task'}) %>
   </div>
 </div>
 <div class="control-group">
   <label for="status" class="control-label">status</label>
   <div class="controls">
     <%- contentTag('input', todo.status, {type:'text', class:'span6', name:'status'}) %>
+  </div>
+</div>
+<div class="control-group">
+  <label for="due" class="control-label">due</label>
+  <div class="controls">
+    <%- contentTag('input', todo.due, {type:'datetime', class:'span3', name:'due'}) %>
   </div>
 </div>
